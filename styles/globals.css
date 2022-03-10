@@ -14,3 +14,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+span:hover {
+  color: rgb(95, 75, 149);
+}

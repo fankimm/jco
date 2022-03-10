@@ -1,0 +1,13 @@
+.navBar {
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  z-index: 100;
+  /* -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(30px); */
+  opacity: 0.9;
+}
+
+.tes span:hover {
+  color: blue;
+}

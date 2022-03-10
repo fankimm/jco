@@ -1,8 +1,18 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.css";
+import "antd/dist/antd.css";
+import Gnb from "./gnb";
+import Footer from "./footer";
+import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Gnb />
+      <div style={{ paddingTop: "80px" }}></div>
+      <Component {...pageProps} />
+      <Footer />
+    </>
+  );
 }
 
-export default MyApp
+export default MyApp;
