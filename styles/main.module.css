@@ -1,0 +1,20 @@
+.saveButton {
+  margin-top: 20px;
+  background: rgb(95, 75, 149);
+  height: 40px;
+  border: 2px solid white;
+  color: white;
+  width: 200px;
+  border-radius: 5px;
+}
+.saveButton:hover {
+  background: rgb(115, 95, 169);
+}
+
+.table {
+  background: red;
+}
+
+.ant-table-small .ant-table-thead > tr > th {
+  background: blue;
+}

@@ -1,7 +1,7 @@
-import styles from "../styles/gnb.module.css";
+import styles from "/styles/gnb.module.css";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import { SearchOutlined, SettingOutlined } from "@ant-design/icons";
-import { Router } from "next/router";
 const Gnb = () => {
   const router = useRouter();
   const handleMenuClick = (menu: string) => {
@@ -11,7 +11,6 @@ const Gnb = () => {
     <>
       <div className={styles.navBar}>
         <div
-          className="tes"
           style={{
             width: 1080,
             display: "flex",
@@ -30,29 +29,29 @@ const Gnb = () => {
               alignItems: "center",
             }}
           >
-            <img src="/logo.png" width={30} style={{ marginRight: "10px" }} />
+            <Image src="/logo.png" width={30} height={30} alt="logo" />
             <span
-              style={{ marginRight: "10px", cursor: "pointer" }}
+              className={styles.menuItem}
               onClick={() => {
-                handleMenuClick("/main");
+                handleMenuClick("/board");
               }}
             >
               JCO
             </span>
             <span
-              style={{ marginRight: "10px", cursor: "pointer" }}
+              className={styles.menuItem}
               onClick={() => handleMenuClick("/")}
             >
               LOGIN
             </span>
             <span
-              style={{ marginRight: "10px", cursor: "pointer" }}
+              className={styles.menuItem}
               onClick={() => handleMenuClick("/account")}
             >
               ACCOUNT
             </span>
             <span
-              style={{ marginRight: "10px", cursor: "pointer" }}
+              className={styles.menuItem}
               onClick={() => handleMenuClick("/test")}
             >
               TEST

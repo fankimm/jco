@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import styles from "/styles/main.module.css";
 import {
   Input,
@@ -17,7 +16,7 @@ import {
   SaveOutlined,
 } from "@ant-design/icons";
 import { useState, useCallback } from "react";
-const Home: NextPage = () => {
+const Id = () => {
   const [requestData, setRequestData] = useState([
     { name: "", code: "", description: "" },
   ]);
@@ -42,32 +41,27 @@ const Home: NextPage = () => {
       title: "name",
       dataIndex: "name",
       key: "name",
-      render: () => <Input />,
     },
     {
       title: "code",
       dataIndex: "code",
       key: "code",
-      render: () => <Input />,
     },
     {
       title: "type",
       dataIndex: "type",
       key: "type",
-      render: () => <Select options={typeOptions} />,
     },
     {
       title: "size",
       dataIndex: "size",
       key: "size",
-      render: () => <InputNumber />,
     },
 
     {
       title: "description",
       dataIndex: "description",
       key: "description",
-      render: () => <Input />,
     },
   ];
   const handleRequestPlus = () => {
@@ -235,17 +229,10 @@ const Home: NextPage = () => {
             <SaveOutlined style={{ marginRight: "10px" }} />
             저장하기
           </button>
-          {/* <Button
-            icon={<SaveOutlined />}
-            style={{ marginTop: "10px", width: "200px" }}
-            size="large"
-          >
-            저장하기
-          </Button> */}
         </Space>
       </div>
     </>
   );
 };
 
-export default Home;
+export default Id;

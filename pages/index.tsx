@@ -1,5 +1,6 @@
 import { Input, Checkbox, Space, Button } from "antd";
 import { useRouter } from "next/router";
+import Image from "next/image";
 const Login = () => {
   const router = useRouter();
   return (
@@ -18,11 +19,7 @@ const Login = () => {
           direction="vertical"
           style={{ textAlign: "center", margin: "auto" }}
         >
-          <img
-            src="./logo.png"
-            width="150px"
-            style={{ marginBottom: "10px" }}
-          />
+          <Image src="/logo.png" width={150} height={150} alt="logo" />
           <h1 style={{ margin: "20px" }}>JCO 서비스에 로그인 하세요</h1>
           <Input style={{ margin: "5px" }} placeholder="ID" />
           <Input.Password style={{ margin: "5px" }} placeholder="암호" />

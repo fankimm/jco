@@ -3,11 +3,17 @@
   position: fixed;
   background-color: white;
   z-index: 100;
-  /* -webkit-backdrop-filter: blur(100px);
-  backdrop-filter: blur(30px); */
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(30px);
   opacity: 0.9;
 }
-
-.tes span:hover {
-  color: blue;
+.span:hover {
+  color: rgb(95, 75, 149);
+}
+.menuItem {
+  margin-right: 10px;
+  cursor: pointer;
+}
+.menuItem:hover {
+  color: rgb(95, 75, 149);
 }
