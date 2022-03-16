@@ -16,12 +16,61 @@ import {
   SaveOutlined,
 } from "@ant-design/icons";
 import { useState, useCallback } from "react";
+interface IData {
+  name: string;
+  code: string;
+  type: string;
+  size: string;
+  description: string;
+}
 const Id = () => {
-  const [requestData, setRequestData] = useState([
-    { name: "", code: "", description: "" },
+  const [requestData, setRequestData] = useState<IData[]>([
+    {
+      name: "수량",
+      code: "quantity",
+      type: "number",
+      size: "10",
+      description: "",
+    },
+    {
+      name: "상품명",
+      code: "productCode",
+      description: "",
+      type: "string",
+      size: "10",
+    },
+    { name: "날짜", code: "date", description: "", type: "string", size: "10" },
+    {
+      name: "차시",
+      code: "onwerSendFlag",
+      description: "",
+      type: "number",
+      size: "10",
+    },
   ]);
-  const [responseData, setResponseData] = useState([
-    { name: "", code: "", description: "" },
+  const [responseData, setResponseData] = useState<IData[]>([
+    {
+      name: "수량",
+      code: "quantity",
+      type: "number",
+      size: "10",
+      description: "",
+    },
+    {
+      name: "상품명",
+      code: "productCode",
+      description: "",
+      type: "string",
+      size: "10",
+    },
+    { name: "날짜", code: "date", description: "", type: "string", size: "10" },
+    {
+      name: "차시",
+      code: "onwerSendFlag",
+      description: "",
+      type: "number",
+      size: "10",
+    },
   ]);
   const [form] = Form.useForm();
   const typeOptions = [
@@ -65,7 +114,10 @@ const Id = () => {
     },
   ];
   const handleRequestPlus = () => {
-    setRequestData([...requestData, { name: "", code: "", description: "" }]);
+    setRequestData([
+      ...requestData,
+      { name: "", code: "", description: "", type: "", size: "" },
+    ]);
   };
   const handleRequestMinus = () => {
     if (requestData && requestData.length > 1) {
@@ -73,7 +125,10 @@ const Id = () => {
     }
   };
   const handleResponsePlus = () => {
-    setResponseData([...responseData, { name: "", code: "", description: "" }]);
+    setResponseData([
+      ...responseData,
+      { name: "", code: "", description: "", type: "", size: "" },
+    ]);
   };
   const handleResponseMinus = useCallback(() => {
     console.log(responseData.length);
@@ -106,26 +161,47 @@ const Id = () => {
                 justifyContent: "center",
               }}
             >
-              <Space direction="vertical">
+              <Space
+                direction="vertical"
+                style={{
+                  width: "500px",
+                  paddingRight: "30px",
+                }}
+              >
+                <h5>담당자</h5>
                 <Form.Item name="manager">
-                  <Input placeholder="담당자" />
+                  <Input placeholder="담당자" defaultValue="진창수" />
                 </Form.Item>
+                <h5>연락처</h5>
                 <Form.Item name="managerContact">
-                  <Input placeholder="연락처" />
+                  <Input placeholder="연락처" defaultValue="01012341234" />
                 </Form.Item>
+                <h5>STAGE</h5>
                 <Form.Item name="stgUrl">
-                  <Input placeholder="STAGE URI" />
+                  <Input
+                    placeholder="STAGE URI"
+                    defaultValue="wms00-ui.sta.kolonfnc.com/manage"
+                  />
                 </Form.Item>
+                <h5>운영</h5>
                 <Form.Item name="prdUrl">
-                  <Input placeholder="PRODUCTION URI" />
+                  <Input
+                    placeholder="PRODUCTION URI"
+                    defaultValue="wms.kolonfnc.com/manage"
+                  />
                 </Form.Item>
               </Space>
-              <div style={{ width: "300px", margin: "auto" }}>
+              <div style={{ width: "500px", margin: "auto" }}>
+                <h5>제목</h5>
                 <Form.Item name="title">
-                  <Input placeholder="TITLE" />
+                  <Input placeholder="TITLE" defaultValue="JCo Test Title" />
                 </Form.Item>
+                <h5>설명</h5>
                 <Form.Item>
-                  <Input.TextArea placeholder="JCO DESCRIPTION" />
+                  <Input.TextArea
+                    placeholder="JCO DESCRIPTION"
+                    defaultValue="테스트용 게시물 입니다."
+                  />
                 </Form.Item>
 
                 <div
@@ -137,34 +213,46 @@ const Id = () => {
                   }}
                 >
                   <Space direction="horizontal" align="center">
-                    <Form.Item name="from">
-                      <Select
-                        placeholder="CONSUMER"
-                        style={{ width: "120px" }}
-                        options={destination}
-                      />
-                    </Form.Item>
+                    <div>
+                      <h5>CONSUMER</h5>
+                      <Form.Item name="from" initialValue="wms">
+                        <Select
+                          placeholder="CONSUMER"
+                          style={{ width: "120px" }}
+                          options={destination}
+                        />
+                      </Form.Item>
+                    </div>
                     <Form.Item>
                       <ArrowRightOutlined />
                     </Form.Item>
-                    <Form.Item name="to">
-                      <Select
-                        placeholder="PROVIDER"
-                        style={{ width: "120px" }}
-                        options={destination}
-                      />
-                    </Form.Item>
+                    <div>
+                      <h5>PROVIDER</h5>
+                      <Form.Item name="to" initialValue="jco">
+                        <Select
+                          placeholder="PROVIDER"
+                          style={{ width: "120px" }}
+                          options={destination}
+                        />
+                      </Form.Item>
+                    </div>
                   </Space>
                 </div>
               </div>
             </Space>
-            <Divider />
             <Space direction="horizontal" align="start">
-              <Space direction="vertical">
+              <Space
+                direction="vertical"
+                style={{
+                  borderRight: "1px solid lightGrey",
+                  paddingRight: "30px",
+                  marginRight: "20px",
+                }}
+              >
                 <Space direction="horizontal" align="start">
                   <h4>CONSUMER</h4>
                   <div>
-                    <Button
+                    {/* <Button
                       style={{ border: "0px" }}
                       onClick={handleRequestPlus}
                     >
@@ -175,13 +263,13 @@ const Id = () => {
                       onClick={handleRequestMinus}
                     >
                       <MinusCircleOutlined />
-                    </Button>
+                    </Button> */}
                   </div>
                   <Form.Item name="consumerManager">
-                    <Input placeholder="담당자" />
+                    <Input placeholder="담당자" defaultValue="김지환" />
                   </Form.Item>
                   <Form.Item name="consumerManagerContact">
-                    <Input placeholder="연락처" />
+                    <Input placeholder="연락처" defaultValue="01097312406" />
                   </Form.Item>
                 </Space>
                 <Table
@@ -192,10 +280,20 @@ const Id = () => {
                   size="small"
                 />
               </Space>
+              {/* <div
+                style={{
+                  margin: "20px",
+                  width: "1px",
+                  height: "250px",
+                  background: "lightGrey",
+                }}
+              >
+                {` `}
+              </div> */}
               <Space direction="vertical">
                 <Space direction="horizontal" align="start">
                   <h4>PROVIDER</h4>
-                  <div>
+                  {/* <div>
                     <Button
                       style={{ border: "0px" }}
                       onClick={handleResponsePlus}
@@ -208,12 +306,12 @@ const Id = () => {
                     >
                       <MinusCircleOutlined />
                     </Button>
-                  </div>
+                  </div> */}
                   <Form.Item name="providerManager">
-                    <Input placeholder="담당자" />
+                    <Input placeholder="담당자" defaultValue="박진수" />
                   </Form.Item>
                   <Form.Item name="providerManagerContact">
-                    <Input placeholder="연락처" />
+                    <Input placeholder="연락처" defaultValue="01012341234" />
                   </Form.Item>
                 </Space>
                 <Table
@@ -227,7 +325,7 @@ const Id = () => {
           </Form>
           <button className={styles.saveButton}>
             <SaveOutlined style={{ marginRight: "10px" }} />
-            저장하기
+            수정하기
           </button>
         </Space>
       </div>
